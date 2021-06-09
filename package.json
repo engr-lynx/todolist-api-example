@@ -8,7 +8,7 @@
   "main": "app/index.js",
   "scripts": {
     "start": "babel-node app/index.js --inspect",
-    "build": "babel -d ./dist ./app && wget -O ./dist/rds-combined-ca-bundle.pem https://s3.amazonaws.com/rds-downloads/rds-combined-ca-bundle.pem",
+    "build": "babel -d ./dist ./app && download -o ./dist https://s3.amazonaws.com/rds-downloads/rds-combined-ca-bundle.pem",
     "build:clean": "rm -rf dist",
     "serve": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,7 +17,8 @@
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
-    "dotenv": "^8.0.0"
+    "dotenv": "^8.0.0",
+    "download-cli": "^1.1.1"
   },
   "dependencies": {
     "@hapi/hapi": "^18.3.1",
