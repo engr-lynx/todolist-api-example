@@ -11,10 +11,7 @@ const server = Hapi.server({
   host: process.env.SERVER_HOST || '0.0.0.0',
   port: process.env.SERVER_PORT || '8000',
   routes: {
-    cors: {
-      origin: ['*'],
-      headers: ['Authorization', 'Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
-    }
+    cors: true
   }, // So that localhost from different ports can connect.
   debug: { request: ['error'] } // Always log errors.
 })
