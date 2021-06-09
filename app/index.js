@@ -14,6 +14,26 @@ const server = Hapi.server({
   debug: { request: ['error'] } // Always log errors.
 })
 
+server.route({
+  method: 'GET',
+  path: '/',
+  handler: async () => {
+
+    console.info('INCOMING REQUEST for /')
+    const healthcheck = {
+      uptime: process.uptime(),
+      message: 'OK',
+      timestamp: Date.now()
+    }
+    try {
+      return healthcheck
+    } catch (e) {
+      return h.response({ error: e }).code(503)
+    }
+
+  }
+})
+
 /**
  * @api {get} /{listId}/todos get all todos
  * @apiName GetTodos
