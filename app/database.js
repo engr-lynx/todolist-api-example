@@ -1,16 +1,11 @@
 import mongoose from 'mongoose'
-import readFileSync from 'fs'
 
 export default async () => {
   try {
     const connectionStr = process.env.MONGODB_CONNECTION_STRING
-    const ca = [readFileSync('rds-combined-ca-bundle.pem')]
 
     console.log('MONGODB:', connectionStr)
-    console.log(ca)
     await mongoose.connect(connectionStr, {
-      sslValidate: true,
-      sslCA:ca,
       useNewUrlParser: true,
     })
 
